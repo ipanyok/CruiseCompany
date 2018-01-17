@@ -45,10 +45,11 @@ public class OrderDAOImpl extends Utils implements IOrderDAO {
                     list.add(order);
                 } while (resultSet.next());
             } else {
+                list = null;
                 logger.log(Level.INFO, "Result Set is empty!");
             }
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
+            logger.log(Level.SEVERE, e.toString());
         }
         return list;
     }
@@ -75,7 +76,7 @@ public class OrderDAOImpl extends Utils implements IOrderDAO {
                 logger.log(Level.INFO, "Result Set is empty!");
             }
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
+            logger.log(Level.SEVERE, e.toString());
         }
         return order;
     }
@@ -104,7 +105,7 @@ public class OrderDAOImpl extends Utils implements IOrderDAO {
                 logger.log(Level.INFO, "Result Set is empty!");
             }
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
+            logger.log(Level.SEVERE, e.toString());
         }
         return orderList;
     }
@@ -120,7 +121,7 @@ public class OrderDAOImpl extends Utils implements IOrderDAO {
                 logger.log(Level.INFO, "Order was deleted!");
             }
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
+            logger.log(Level.SEVERE, e.toString());
         }
     }
 
@@ -142,8 +143,8 @@ public class OrderDAOImpl extends Utils implements IOrderDAO {
                 return "Order was created!";
             }
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
-            return "ERROR in DAO!";
+            logger.log(Level.SEVERE, e.toString());
+            return "ERROR in Database Access!";
         }
         return null;
     }
@@ -161,8 +162,8 @@ public class OrderDAOImpl extends Utils implements IOrderDAO {
                 return "Bonus was updated!";
             }
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
-            return "ERROR in DAO!";
+            logger.log(Level.SEVERE, e.toString());
+            return "ERROR in Database Access!";
         }
         return null;
     }

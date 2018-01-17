@@ -24,7 +24,8 @@ public class CruiseDAOImpl extends Utils implements ICruiseDAO {
     private static final String FIND_ALL_CRUISES_QUERY = "SELECT * FROM CRUISE.CRUISE ORDER BY ID";
     private static final String FIND_CRUISES_BY_ID_QUERY = "SELECT * FROM CRUISE.CRUISE WHERE ID = ?";
     private static final String FIND_CRUISES_BY_NAME_QUERY = "SELECT * FROM CRUISE.CRUISE WHERE NAME = ?";
-    private static final String FIND_CRUISES_BY_DEST_QUERY = "SELECT * FROM CRUISE.CRUISE, CRUISE.COUNTRY C_FROM, CRUISE.COUNTRY C_TO " +
+    private static final String FIND_CRUISES_BY_DEST_QUERY =
+            "SELECT * FROM CRUISE.CRUISE, CRUISE.COUNTRY C_FROM, CRUISE.COUNTRY C_TO " +
             "WHERE CRUISE.CRUISE.CITY_FROM = C_FROM.ID " +
             "AND CRUISE.CRUISE.CITY_TO = C_TO.ID" +
             "AND C_FROM.NAME = ? AND C_TO.NAME = ?";
@@ -32,7 +33,8 @@ public class CruiseDAOImpl extends Utils implements ICruiseDAO {
     private static final String DELETE_CRUISES_BY_NAME_QUERY = "DELETE FROM CRUISE.CRUISE WHERE NAME = ?";
     private static final String MAX_CRUISES_ID_QUERY = "SELECT max(id) FROM CRUISE.CRUISE";
     private static final String CREATE_CRUISES_QUERY = "INSERT INTO CRUISE.CRUISE VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    private static final String FIND_CRUISES_WITH_PARAMETERS = "select cr.id, cr.name cruise_name, sh.name ship_name, c_from.name c_from, c_from.city c_from_city, c_to.name c_to, c_to.city c_to_city, cr.date_start, cr.date_finish, cr.ports_count, cr.category, cr.price \n" +
+    private static final String FIND_CRUISES_WITH_PARAMETERS =
+            "select cr.id, cr.name cruise_name, sh.name ship_name, c_from.name c_from, c_from.city c_from_city, c_to.name c_to, c_to.city c_to_city, cr.date_start, cr.date_finish, cr.ports_count, cr.category, cr.price \n" +
             "from cruise.cruise cr\n" +
             "left join cruise.country c_from on cr.city_from = c_from.id\n" +
             "left join cruise.country c_to on cr.city_to = c_to.id\n" +
@@ -64,7 +66,7 @@ public class CruiseDAOImpl extends Utils implements ICruiseDAO {
                 logger.log(Level.INFO, "Result Set is empty!");
             }
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
+            logger.log(Level.SEVERE, e.toString());
         }
         return list;
     }
@@ -94,7 +96,7 @@ public class CruiseDAOImpl extends Utils implements ICruiseDAO {
                 logger.log(Level.INFO, "Result Set is empty!");
             }
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
+            logger.log(Level.SEVERE, e.toString());
         }
         return cruise;
     }
@@ -124,7 +126,7 @@ public class CruiseDAOImpl extends Utils implements ICruiseDAO {
                 logger.log(Level.INFO, "Result Set is empty!");
             }
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
+            logger.log(Level.SEVERE, e.toString());
         }
         return cruise;
     }
@@ -156,7 +158,7 @@ public class CruiseDAOImpl extends Utils implements ICruiseDAO {
                 logger.log(Level.INFO, "Result Set is empty!");
             }
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
+            logger.log(Level.SEVERE, e.toString());
         }
         return listCruise;
     }
@@ -173,7 +175,7 @@ public class CruiseDAOImpl extends Utils implements ICruiseDAO {
                 logger.log(Level.INFO, "Cruise " + cruiseName + " was deleted!");
             }
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
+            logger.log(Level.SEVERE, e.toString());
         }
     }
 
@@ -188,7 +190,7 @@ public class CruiseDAOImpl extends Utils implements ICruiseDAO {
                 logger.log(Level.INFO, "Cruise " + name + " was deleted!");
             }
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
+            logger.log(Level.SEVERE, e.toString());
         }
     }
 
@@ -212,7 +214,7 @@ public class CruiseDAOImpl extends Utils implements ICruiseDAO {
                 logger.log(Level.INFO, "Cruise " + cruise.getName() + " was created!");
             }
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
+            logger.log(Level.SEVERE, e.toString());
         }
     }
 
@@ -235,8 +237,7 @@ public class CruiseDAOImpl extends Utils implements ICruiseDAO {
                 }
             }
         }
-        str = str.substring(0, str.lastIndexOf("a") - 1);
-        str = str + "ORDER BY CR.ID";
+        str = str.substring(0, str.lastIndexOf("a") - 1) + "ORDER BY CR.ID";
         List<CruiseInfoView> listCruiseInfoResult = new ArrayList<>();
         try (Connection connection = MyDataSource.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(str);
@@ -249,7 +250,7 @@ public class CruiseDAOImpl extends Utils implements ICruiseDAO {
                 logger.log(Level.INFO, "Result Set is empty!");
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, e.toString());
         }
         return listCruiseInfoResult;
     }

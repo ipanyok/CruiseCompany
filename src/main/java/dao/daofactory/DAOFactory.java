@@ -35,11 +35,6 @@ public class DAOFactory implements AbstractFactory{
     }
 
     @Override
-    public CardDAOImpl createCardDAO() {
-        return new CardDAOImpl();
-    }
-
-    @Override
     public BucketDAOImpl createBucketDAO() {
         return new BucketDAOImpl();
     }

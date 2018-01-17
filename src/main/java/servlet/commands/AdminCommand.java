@@ -32,7 +32,7 @@ public class AdminCommand implements Command {
             page = redirect(request);
         }
         if (request.getParameter(ADD_BONUS_BUTTON) != null && request.getParameter(ADD_BONUS_BUTTON).startsWith(Localization.getAttribute(request, "addBonusLoc"))) {
-            int orderID = Integer.parseInt(request.getParameter(ADD_BONUS_BUTTON).substring(request.getParameter(ADD_BONUS_BUTTON).lastIndexOf(":") + 1));
+            int orderID = Integer.parseInt(request.getParameter(ADD_BONUS_BUTTON).substring(Localization.getAttribute(request, "addBonusLoc").length()));
             String value = request.getParameter(BONUS_GET + orderID);
             AdminService adminService = new AdminService();
             String resultMessage = adminService.changeBonus(orderID, value);

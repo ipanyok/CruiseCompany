@@ -39,7 +39,9 @@ public class AdminService {
         if (orderList != null) {
             for (Order elem : orderList) {
                 Cruise cruise = cruiseDAO.findById(elem.getCruiseID());
-                OrdersInfoView ordersInfoView = new OrdersInfoView(elem, userDAO.findById(elem.getUserID()), cruise, countryDAO.findById(cruise.getCityFromID()), countryDAO.findById(cruise.getCityToID()), shipDAO.findById(cruise.getShipID()));
+                OrdersInfoView ordersInfoView = new OrdersInfoView(elem,
+                        userDAO.findById(elem.getUserID()),
+                        cruise, countryDAO.findById(cruise.getCityFromID()), countryDAO.findById(cruise.getCityToID()), shipDAO.findById(cruise.getShipID()));
                 ordersInfoViewsList.add(ordersInfoView);
             }
         } else {

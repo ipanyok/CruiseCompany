@@ -36,6 +36,15 @@ public class BucketService {
      * Add an order in user's bucket
      * */
     public String addBucketToUser(String userName, int cruiseId) {
+        List<BucketInfoView> bucketsOfUser = findBucketsOfUser(userName);
+        if (bucketsOfUser != null) {
+            for (BucketInfoView elem : bucketsOfUser) {
+                if (elem.getCruise().getId() == cruiseId) {
+                    logger.log(Level.INFO, "This cruise is already added in bucket!!!");
+                    return "This cruise is already added in bucket!!!";
+                }
+            }
+        }
         Bucket bucket = new Bucket();
         bucket.setUserID(userDAO.findByLogin(userName).getId());
         bucket.setCruiseID(cruiseId);

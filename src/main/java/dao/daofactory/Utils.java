@@ -22,7 +22,7 @@ public abstract class Utils {
             resultSet.next();
             result = resultSet.getInt(1);
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
+            logger.log(Level.SEVERE, e.toString());
         }
         return result;
     }

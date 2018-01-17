@@ -47,7 +47,7 @@ public class UserDAOImpl extends Utils implements IUserDAO {
                 logger.log(Level.INFO, "Result Set is empty!");
             }
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
+            logger.log(Level.SEVERE, e.toString());
         }
         return list;
     }
@@ -74,7 +74,7 @@ public class UserDAOImpl extends Utils implements IUserDAO {
                 logger.log(Level.INFO, "Result Set is empty!");
             }
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
+            logger.log(Level.SEVERE, e.toString());
         }
         return user;
     }
@@ -101,7 +101,7 @@ public class UserDAOImpl extends Utils implements IUserDAO {
                 logger.log(Level.INFO, "Result Set is empty!");
             }
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
+            logger.log(Level.SEVERE, e.toString());
         }
         return user;
     }
@@ -120,7 +120,7 @@ public class UserDAOImpl extends Utils implements IUserDAO {
                 logger.log(Level.INFO, "Have no user " + userLogin + " in system!");
             }
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
+            logger.log(Level.SEVERE, e.toString());
         }
     }
 
@@ -137,7 +137,7 @@ public class UserDAOImpl extends Utils implements IUserDAO {
                 logger.log(Level.INFO, "Have no user " + name + " in system!");
             }
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
+            logger.log(Level.SEVERE, e.toString());
         }
     }
 
@@ -161,7 +161,7 @@ public class UserDAOImpl extends Utils implements IUserDAO {
                 logger.log(Level.INFO, "User " + user.getLogin() + " does not create!");
             }
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
+            logger.log(Level.SEVERE, e.toString());
         }
         return false;
     }

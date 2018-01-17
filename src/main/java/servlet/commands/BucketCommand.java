@@ -28,7 +28,7 @@ public class BucketCommand implements Command {
         OrderService orderService = new OrderService();
         HttpSession session = request.getSession();
         if (request.getParameter(ORDER_BUTTON) != null && request.getParameter(ORDER_BUTTON).startsWith(Localization.getAttribute(request, "buyNowLoc"))) {
-            int cruiseID = Integer.parseInt(request.getParameter(ORDER_BUTTON).substring(request.getParameter(ORDER_BUTTON).lastIndexOf(":") + 1));
+            int cruiseID = Integer.parseInt(request.getParameter(ORDER_BUTTON).substring(Localization.getAttribute(request, "buyNowLoc").length()));
             String userLogin = (String) session.getAttribute(USER_NAME_SET);
             int bucketID = Integer.parseInt(request.getParameter(BUCKET_ID_GET + cruiseID));
             String excursion = request.getParameter(EXCURSIONS_GET + cruiseID);

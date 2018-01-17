@@ -43,7 +43,7 @@ public class BucketDAOImpl extends Utils implements IBucketDAO {
                 } while (resultSet.next());
             }
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
+            logger.log(Level.SEVERE, e.toString());
         }
         return bucket;
     }
@@ -70,7 +70,7 @@ public class BucketDAOImpl extends Utils implements IBucketDAO {
                 logger.log(Level.INFO, "Result Set is empty!");
             }
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
+            logger.log(Level.SEVERE, e.toString());
         }
         return bucketList;
     }
@@ -86,7 +86,7 @@ public class BucketDAOImpl extends Utils implements IBucketDAO {
                 logger.log(Level.INFO, "Bucket was deleted!");
             }
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
+            logger.log(Level.SEVERE, e.toString());
         }
     }
 
@@ -106,7 +106,7 @@ public class BucketDAOImpl extends Utils implements IBucketDAO {
                 return "Bucket was created";
             }
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
+            logger.log(Level.SEVERE, e.toString());
             return null;
         }
         return null;

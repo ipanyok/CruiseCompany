@@ -65,8 +65,8 @@
                             </td>
                             <td><c:out value="${buf.price}"/></td>
                             <input type="hidden" name="idBucketBtn${buf.cruise.id}" value="${buf.bucket.id}">
-                            <td><input class="w3-bar-item w3-button" type="submit" name="buyNow" value="${buyNowLoc}${buf.cruise.id}">
-                            </td>
+                            <%--<td><input class="w3-bar-item w3-button" type="submit" name="buyNow" value="${buyNowLoc}${buf.cruise.id}"></td>--%>
+                           <td> <button  class="w3-bar-item w3-button" name="buyNow" value="${buyNowLoc}${buf.cruise.id}" >${buyNowLoc}</button></td>
                         </tr>
                     </c:forEach>
                     </tbody>
@@ -80,6 +80,10 @@
 <div class="w3-top w3-hide-small">
     <div class="w3-bar w3-xlarge w3-black w3-opacity w3-hover-opacity-off" id="myNavbar">
         <a href="/cruisecompany?command=homeButton&homeBtn=home" class="w3-bar-item w3-button">${homeMainLoc}</a>
+        <a href="/cruisecompany?command=bucketButton&bucketBtn=bucket" class="w3-bar-item w3-button">${bucketMainLoc}</a>
+        <a href="/cruisecompany?command=orderButton&orderBtn=order" class="w3-bar-item w3-button">${orderMainLoc}</a>
+        <a href="/cruisecompany?command=logoutButton&logoutBtn=logout" class="w3-bar-item w3-button">${logoutMainLoc}</a>
+        <label class="w3-bar-item w3-button">&nbsp;|&nbsp;</label>
         <h6><p align="right"> Hello, ${user}&nbsp;</p></h6>
     </div>
 </div>

@@ -36,6 +36,15 @@ public class OrderService {
      * Create new order
      * */
     public String makeOrder(String userLogin, int cruiseID, int bucketID, double priceExcursion, String excursionNote) {
+        List<BucketInfoView> ordersOfUser = findOrdersOfUser(userLogin);
+        if (ordersOfUser != null) {
+            for (BucketInfoView elem : ordersOfUser) {
+                if (elem.getCruise().getId() == cruiseID) {
+                    logger.log(Level.INFO, "Can't buy! This cruise already added in orders");
+                    return "Can't buy! This cruise already added in orders";
+                }
+            }
+        }
         Order order = new Order();
         order.setUserID(userDAO.findByLogin(userLogin).getId());
         order.setCruiseID(cruiseID);

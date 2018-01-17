@@ -45,7 +45,7 @@ public class StaffDAOImpl extends Utils implements IStaffDAO {
                 logger.log(Level.INFO, "Result Set is empty!");
             }
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
+            logger.log(Level.SEVERE, e.toString());
         }
         return list;
     }
@@ -70,7 +70,7 @@ public class StaffDAOImpl extends Utils implements IStaffDAO {
                 logger.log(Level.INFO, "Result Set is empty!");
             }
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
+            logger.log(Level.SEVERE, e.toString());
         }
         return staffList;
     }
@@ -94,7 +94,7 @@ public class StaffDAOImpl extends Utils implements IStaffDAO {
                 logger.log(Level.INFO, "Result Set is empty!");
             }
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
+            logger.log(Level.SEVERE, e.toString());
         }
         return staff;
     }
@@ -118,7 +118,7 @@ public class StaffDAOImpl extends Utils implements IStaffDAO {
                 logger.log(Level.INFO, "Result Set is empty!");
             }
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
+            logger.log(Level.SEVERE, e.toString());
         }
         return staff;
     }
@@ -135,7 +135,7 @@ public class StaffDAOImpl extends Utils implements IStaffDAO {
                 logger.log(Level.INFO, "Staff " + staffName + " was deleted!");
             }
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
+            logger.log(Level.SEVERE, e.toString());
         }
     }
 
@@ -150,7 +150,7 @@ public class StaffDAOImpl extends Utils implements IStaffDAO {
                 logger.log(Level.INFO, "Staff " + name + " was deleted!");
             }
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
+            logger.log(Level.SEVERE, e.toString());
         }
     }
 
@@ -168,7 +168,7 @@ public class StaffDAOImpl extends Utils implements IStaffDAO {
                 logger.log(Level.INFO, "Staff " + staff.getName() + " was created!");
             }
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
+            logger.log(Level.SEVERE, e.toString());
         }
     }
 }

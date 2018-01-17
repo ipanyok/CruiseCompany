@@ -43,7 +43,7 @@ public class CountryDAOImpl extends Utils implements ICountryDAO {
                 logger.log(Level.INFO, "Result Set is empty!");
             }
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
+            logger.log(Level.SEVERE, e.toString());
         }
         return list;
     }
@@ -66,7 +66,7 @@ public class CountryDAOImpl extends Utils implements ICountryDAO {
                 logger.log(Level.INFO, "Result Set is empty!");
             }
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
+            logger.log(Level.SEVERE, e.toString());
         }
         return country;
     }
@@ -89,7 +89,7 @@ public class CountryDAOImpl extends Utils implements ICountryDAO {
                 logger.log(Level.INFO, "Result Set is empty!");
             }
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
+            logger.log(Level.SEVERE, e.toString());
         }
         return country;
     }
@@ -106,7 +106,7 @@ public class CountryDAOImpl extends Utils implements ICountryDAO {
                 logger.log(Level.INFO, "Country " + countryName + " was deleted!");
             }
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
+            logger.log(Level.SEVERE, e.toString());
         }
     }
 
@@ -121,7 +121,7 @@ public class CountryDAOImpl extends Utils implements ICountryDAO {
                 logger.log(Level.INFO, "Country " + name + " was deleted!");
             }
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
+            logger.log(Level.SEVERE, e.toString());
         }
     }
 
@@ -138,7 +138,7 @@ public class CountryDAOImpl extends Utils implements ICountryDAO {
                 logger.log(Level.INFO, "Country " + country.getName() + " was created!");
             }
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
+            logger.log(Level.SEVERE, e.toString());
         }
     }
 }

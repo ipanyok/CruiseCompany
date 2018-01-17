@@ -45,7 +45,7 @@ public class ExcursionDAOImpl extends Utils implements IExcursionDAO {
                 logger.log(Level.INFO, "Result Set is empty!");
             }
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
+            logger.log(Level.SEVERE, e.toString());
         }
         return list;
     }
@@ -71,7 +71,7 @@ public class ExcursionDAOImpl extends Utils implements IExcursionDAO {
                 logger.log(Level.INFO, "Result Set is empty!");
             }
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
+            logger.log(Level.SEVERE, e.toString());
         }
         return excursionList;
     }
@@ -95,7 +95,7 @@ public class ExcursionDAOImpl extends Utils implements IExcursionDAO {
                 logger.log(Level.INFO, "Result Set is empty!");
             }
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
+            logger.log(Level.SEVERE, e.toString());
         }
         return excursion;
     }
@@ -119,7 +119,7 @@ public class ExcursionDAOImpl extends Utils implements IExcursionDAO {
                 logger.log(Level.INFO, "Result Set is empty!");
             }
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
+            logger.log(Level.SEVERE, e.toString());
         }
         return excursion;
     }
@@ -136,7 +136,7 @@ public class ExcursionDAOImpl extends Utils implements IExcursionDAO {
                 logger.log(Level.INFO, "Excursion " + excursionName + " was deleted!");
             }
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
+            logger.log(Level.SEVERE, e.toString());
         }
     }
 
@@ -151,7 +151,7 @@ public class ExcursionDAOImpl extends Utils implements IExcursionDAO {
                 logger.log(Level.INFO, "Excursion " + name + " was deleted!");
             }
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
+            logger.log(Level.SEVERE, e.toString());
         }
     }
 
@@ -169,7 +169,7 @@ public class ExcursionDAOImpl extends Utils implements IExcursionDAO {
                 logger.log(Level.INFO, "Excursion " + excursion.getName() + " was created!");
             }
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.toString());
+            logger.log(Level.SEVERE, e.toString());
         }
     }
 }

@@ -19,9 +19,9 @@ public class MyDataSource {
             connection = ds.getConnection();
             connection.setAutoCommit(false);
         } catch (NamingException e) {
-            logger.log(Level.INFO, e.getMessage());
+            logger.log(Level.SEVERE, e.getMessage());
         } catch (SQLException e) {
-            logger.log(Level.INFO, e.getMessage());
+            logger.log(Level.SEVERE, e.getMessage());
         }
         return connection;
     }

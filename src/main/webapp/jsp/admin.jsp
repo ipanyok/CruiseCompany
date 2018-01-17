@@ -27,8 +27,10 @@
 <form name="d" action="cruisecompany">
     <div class="w3-top w3-hide-small">
         <div class="w3-bar w3-xlarge w3-black w3-opacity w3-hover-opacity-off" id="myNavbar">
-            <a href="/cruisecompany?command=homeButtonAdmin&homeBtnAdmin=homeAdmin" class="w3-bar-item w3-button">${homeMainLoc}</a>
-            <a href="/cruisecompany?command=logoutButton&logoutBtn=logout" class="w3-bar-item w3-button" >${logoutMainLoc}</a>
+            <a href="/cruisecompany?command=homeButtonAdmin&homeBtnAdmin=homeAdmin"
+               class="w3-bar-item w3-button">${homeMainLoc}</a>
+            <a href="/cruisecompany?command=logoutButton&logoutBtn=logout"
+               class="w3-bar-item w3-button">${logoutMainLoc}</a>
             <label class="w3-bar-item w3-button">&nbsp;|&nbsp;</label>
             <a href="/cruisecompany?command=enAdminLocation&enAdminLocBtn=english" class="w3-bar-item w3-button">EN</a>
             <a href="/cruisecompany?command=uaAdminLocation&uaAdminLocBtn=ukraine" class="w3-bar-item w3-button">UA</a>
@@ -38,6 +40,9 @@
 </form>
 <div class="bgimg w3-display-container w3-text-white">
     <div class="w3-display-middle">
+        <c:if test="${orders == null}">
+            <h1 class="w3-jumbo w3-animate-top">NO ORDERS</h1>
+        </c:if>
         <c:if test="${orders != null}">
             <form name="tableorderAdmin" action="cruisecompany" method="post">
                 <input type="hidden" name="command" value="addBonus"/>
@@ -69,8 +74,13 @@
                             <td><c:out value="${buf.order.excursion}"/></td>
                             <td><c:out value="${buf.order.ticket}"/></td>
                             <td><c:out value="${buf.order.price}"/></td>
-                            <td><input type="text" name="bonus${buf.order.id}" value="<c:out value="${buf.order.bonus}"/>"></td>
-                            <td><input class="w3-bar-item w3-button" type="submit" name="addBonusBtn" value="${addBonusLoc}${buf.order.id}"></td>
+                            <td><input type="text" name="bonus${buf.order.id}"
+                                       value="<c:out value="${buf.order.bonus}"/>"></td>
+                                <%--<td><input class="w3-bar-item w3-button" type="submit" name="addBonusBtn" value="${addBonusLoc}${buf.order.id}"></td>--%>
+                            <td>
+                                <button class="w3-bar-item w3-button" name="addBonusBtn"
+                                        value="${addBonusLoc}${buf.order.id}">${addBonusLoc}</button>
+                            </td>
                         </tr>
                     </c:forEach>
                     </tbody>

@@ -36,6 +36,7 @@ public class MainCommand implements Command {
     private static final String BUCKETS_SET = "buckets";
     private static final String ORDERS_SET = "orders";
     private static final String LOCALE = "LOCALE";
+    private static final String ALL_CRUISES = "allCruises";
 
     private final int paginationTotal = 5;
 
@@ -55,14 +56,14 @@ public class MainCommand implements Command {
             String category = request.getParameter(CATEGORY_GET);
             String date = request.getParameter(DATE_GET);
             List<CruiseInfoView> cruises = mainInfoService.findAllCruises(countryFrom, countryTo, category, date);
-            session.setAttribute("findAllCruises", cruises);
+            session.setAttribute(ALL_CRUISES, cruises);
             request.setAttribute(DATE_SET, request.getParameter(DATE_GET));
             request.setAttribute(HIDDEN_SET, "visible");
 
             // pagination
-            List<PagesBean> pagesList = pagesCount((List<CruiseInfoView>) session.getAttribute("findAllCruises"));
+            List<PagesBean> pagesList = pagesCount((List<CruiseInfoView>) session.getAttribute(ALL_CRUISES));
             session.setAttribute("countPages", pagesList);
-            List<CruiseInfoView> cruiseInfoViewsList = mainInfoService.printResult((List<CruiseInfoView>) session.getAttribute("findAllCruises"), 0, paginationTotal);
+            List<CruiseInfoView> cruiseInfoViewsList = mainInfoService.printResult((List<CruiseInfoView>) session.getAttribute(ALL_CRUISES), 0, paginationTotal);
             request.setAttribute(CRUISES_SET, cruiseInfoViewsList);
             //
 
@@ -71,7 +72,7 @@ public class MainCommand implements Command {
 
         if (request.getParameter("page") != null) {
             int pageNumber = Integer.parseInt(request.getParameter("page"));
-            List<CruiseInfoView> cruiseInfoViewsList = mainInfoService.printResult((List<CruiseInfoView>) session.getAttribute("findAllCruises"), pageNumber*paginationTotal - paginationTotal , paginationTotal);
+            List<CruiseInfoView> cruiseInfoViewsList = mainInfoService.printResult((List<CruiseInfoView>) session.getAttribute(ALL_CRUISES), pageNumber*paginationTotal - paginationTotal , paginationTotal);
             request.setAttribute(CRUISES_SET, cruiseInfoViewsList);
             page = ConfigurationManager.getInstance().getProperty(ConfigurationManager.MAIN_FORM);
         }

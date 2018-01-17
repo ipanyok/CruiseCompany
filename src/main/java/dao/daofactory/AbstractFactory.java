@@ -9,7 +9,6 @@ public interface AbstractFactory {
     ExcursionDAOImpl createExcursionDAO();
     CruiseDAOImpl createCruiseDAO();
     CountryDAOImpl createCountryDAO();
-    CardDAOImpl createCardDAO();
     BucketDAOImpl createBucketDAO();
     OrderDAOImpl createOrderDAO();
 }
