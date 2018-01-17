@@ -6,36 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6b55b0f0-22e2-40d8-9f21-acbf845dc24d" name="Default" comment="changes">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/CruiseCompanyApp_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/CruiseCompanyApp_war_exploded.xml" />
+    <list default="true" id="6b55b0f0-22e2-40d8-9f21-acbf845dc24d" name="Default" comment="changesh">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/test/AdminServiceTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CruiseCompanyApp.iml" afterPath="$PROJECT_DIR$/CruiseCompanyApp.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/connection/MyDataSource.java" afterPath="$PROJECT_DIR$/src/main/java/connection/MyDataSource.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dao/daofactory/AbstractFactory.java" afterPath="$PROJECT_DIR$/src/main/java/dao/daofactory/AbstractFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dao/daofactory/DAOFactory.java" afterPath="$PROJECT_DIR$/src/main/java/dao/daofactory/DAOFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dao/daofactory/Utils.java" afterPath="$PROJECT_DIR$/src/main/java/dao/daofactory/Utils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dao/impl/BucketDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/dao/impl/BucketDAOImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dao/impl/CountryDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/dao/impl/CountryDAOImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dao/impl/CruiseDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/dao/impl/CruiseDAOImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dao/impl/ExcursionDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/dao/impl/ExcursionDAOImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dao/impl/OrderDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/dao/impl/OrderDAOImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dao/impl/ShipDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/dao/impl/ShipDAOImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dao/impl/StaffDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/dao/impl/StaffDAOImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dao/impl/UserDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/dao/impl/UserDAOImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/services/AdminService.java" afterPath="$PROJECT_DIR$/src/main/java/services/AdminService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/services/BucketService.java" afterPath="$PROJECT_DIR$/src/main/java/services/BucketService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/services/OrderService.java" afterPath="$PROJECT_DIR$/src/main/java/services/OrderService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/servlet/RequestHelper.java" afterPath="$PROJECT_DIR$/src/main/java/servlet/RequestHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/servlet/commands/AdminCommand.java" afterPath="$PROJECT_DIR$/src/main/java/servlet/commands/AdminCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/servlet/commands/BucketCommand.java" afterPath="$PROJECT_DIR$/src/main/java/servlet/commands/BucketCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/servlet/commands/MainCommand.java" afterPath="$PROJECT_DIR$/src/main/java/servlet/commands/MainCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/EN_Location.properties" afterPath="$PROJECT_DIR$/src/main/resources/EN_Location.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/UA_Location.properties" afterPath="$PROJECT_DIR$/src/main/resources/UA_Location.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/jsp/admin.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/admin.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/jsp/bucket.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/bucket.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/jsp/main.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/main.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/jsp/order.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/order.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -91,35 +64,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RequestHelper.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="RequestHelper.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/servlet/RequestHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="36" column="4" lean-forward="false" selection-start-line="36" selection-start-column="4" selection-end-line="36" selection-end-column="4" />
+            <state relative-caret-position="391">
+              <caret line="48" column="9" lean-forward="true" selection-start-line="48" selection-start-column="9" selection-end-line="48" selection-end-column="9" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CruiseDAOImpl.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dao/impl/CruiseDAOImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="23" column="58" lean-forward="false" selection-start-line="23" selection-start-column="58" selection-end-line="23" selection-end-column="58" />
-              <folding>
-                <marker date="1515697919634" expanded="true" signature="707:746" ph="SELECT * FRO... CRUISE" />
-                <marker date="1515697919634" expanded="true" signature="809:849" ph="SELECT * FRO... CRUISE" />
-                <marker date="1515697919634" expanded="true" signature="914:956" ph="SELECT * FRO... CRUISE" />
-                <marker date="1515697919634" expanded="true" signature="1033:1270" ph="SELECT * FRO... CRUISE" />
-                <marker date="1515697919634" expanded="true" signature="1335:1373" ph="DELETE FROM " />
-                <marker date="1515697919634" expanded="true" signature="1440:1480" ph="DELETE FROM " />
-                <marker date="1515697919634" expanded="true" signature="1631:1693" ph="INSERT INTO CRUISE.CRUISE... " />
-                <marker date="1515697919634" expanded="true" signature="1772:2255" ph="select cr.id... cruise" />
-                <marker date="1515697919634" expanded="true" signature="11056:11099" ph="select cr.id... cruise" />
-                <marker date="1515697919634" expanded="true" signature="11210:11250" ph="select cr.id... cruise" />
-                <marker date="1515697919634" expanded="true" signature="11359:11397" ph="select cr.id... cruise" />
-                <marker date="1515697919634" expanded="true" signature="11505:11545" ph="select cr.id... cruise" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -295,6 +245,14 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CruiseCompanyApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CruiseCompanyApp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CruiseCompanyApp" type="b2602c69:ProjectViewProjectNode" />
@@ -600,8 +558,16 @@
       <workItem from="1516046547107" duration="4648000" />
       <workItem from="1516193414863" duration="5291000" />
       <workItem from="1516201701212" duration="1590000" />
-      <workItem from="1516211712384" duration="5308000" />
+      <workItem from="1516211712384" duration="5461000" />
     </task>
+    <task id="LOCAL-00001" summary="changes">
+      <created>1516219242132</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1516219242132</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -637,15 +603,14 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="284177000" />
+    <option name="totallyTimeSpent" value="284330000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32840723" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32840723" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -658,7 +623,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20801815" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20801815" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28214827" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1209,14 +1174,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/servlet/RequestHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="36" column="4" lean-forward="false" selection-start-line="36" selection-start-column="4" selection-end-line="36" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dao/impl/CruiseDAOImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -1235,6 +1192,14 @@
             <marker date="1515697919634" expanded="true" signature="11359:11397" ph="select cr.id... cruise" />
             <marker date="1515697919634" expanded="true" signature="11505:11545" ph="select cr.id... cruise" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/servlet/RequestHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="48" column="9" lean-forward="true" selection-start-line="48" selection-start-column="9" selection-end-line="48" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
