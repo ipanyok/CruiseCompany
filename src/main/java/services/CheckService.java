@@ -2,6 +2,7 @@ package services;
 
 import dao.daofactory.*;
 import entity.User;
+import servlet.configuration.LocationManager;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Date;
@@ -25,7 +26,7 @@ public class CheckService {
     public String checkUser(String login, String password) {
         if (login == null || login.equals("")) {
             logger.log(Level.INFO, "Login is empty!");
-            return "Login is empty!";
+            return LocationManager.EMPTY_LOGIN;
         } else {
             User user = userDAO.findByLogin(login);
             if (user != null) {
@@ -33,11 +34,11 @@ public class CheckService {
                     return null;
                 } else {
                     logger.log(Level.INFO, "Wrong password!");
-                    return "Wrong password!";
+                    return LocationManager.WRONG_PASSWORD;
                 }
             } else {
                 logger.log(Level.INFO, "User does not exists in System!!!");
-                return "User does not exists in System!!!";
+                return LocationManager.IS_EXIST_USER;
             }
         }
     }
@@ -57,30 +58,30 @@ public class CheckService {
         user.setCreateDate(new Date(new java.util.Date().getTime()));
         if (user.getLogin() == null || user.getLogin().equals("")) {
             logger.log(Level.INFO, "Login is empty");
-            return "Login is empty";
+            return LocationManager.EMPTY_LOGIN;
         }
         if (user.getPassword() == null || user.getPassword().equals("")) {
             logger.log(Level.INFO, "Password is empty");
-            return "Password is empty";
+            return LocationManager.EMPTY_PASSWORD;
         }
         if (user.getFirstName() == null || user.getFirstName().equals("")) {
             logger.log(Level.INFO, "First Name is empty");
-            return "First Name is empty";
+            return LocationManager.EMPTY_FIRST_NAME;
         }
         if (user.getLastName() == null || user.getLastName().equals("")) {
             logger.log(Level.INFO, "Last Name is empty");
-            return "Last Name is empty";
+            return LocationManager.EMPTY_LAST_NAME;
         }
         if (userDAO.findByLogin(user.getLogin()) == null) {
             boolean result = userDAO.createUser(user);
             if (result) {
                 return null;
             } else {
-                return "Error in DAO";
+                return LocationManager.ERROR_DAO;
             }
         } else {
             logger.log(Level.INFO, "User with login " + user.getLogin() + " exist!");
-            return "User with login " + user.getLogin() + " exist!";
+            return LocationManager.USER_IS_EXIST;
         }
     }
 }

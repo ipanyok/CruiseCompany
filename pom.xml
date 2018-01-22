@@ -7,8 +7,8 @@
     <artifactId>CruiseCompanyApp</artifactId>
     <packaging>war</packaging>
     <version>1.0</version>
-    <name>CruiseCompanyApp Maven Webapp</name>
-    <url>http://maven.apache.org</url>
+    <!--<name>CruiseCompanyApp Maven Webapp</name>-->
+    <!--<url>http://maven.apache.org</url>-->
 
     <dependencies>
         <dependency>
@@ -39,7 +39,7 @@
     </dependencies>
 
     <build>
-        <finalName>CruiseCompanyApp</finalName>
+        <finalName>cruisecompany</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

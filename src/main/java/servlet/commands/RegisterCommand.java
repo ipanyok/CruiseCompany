@@ -6,6 +6,7 @@ import services.CheckService;
 import services.MainInfoService;
 import servlet.Localization;
 import servlet.configuration.ConfigurationManager;
+import servlet.configuration.LocationManager;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +22,7 @@ public class RegisterCommand implements Command {
     private static final String COUNTRY_FROM_SET = "countryFrom";
     private static final String COUNTRY_TO_SET = "countryTo";
     private static final String HIDDEN_SET = "isHidden";
-    private static final String MESSAGE_SET = "message";
+    private static final String MESSAGE_SET = "messageRegister";
     private static final String LOGIN_SET = "login";
     private static final String PASS_SET = "pass";
     private static final String FIRST_SET = "first";
@@ -52,7 +53,7 @@ public class RegisterCommand implements Command {
                 request.setAttribute(HIDDEN_SET, "hidden");
                 page = ConfigurationManager.getInstance().getProperty(ConfigurationManager.MAIN_FORM);
             } else {
-                request.setAttribute(MESSAGE_SET, getRegisterResult);
+                session.setAttribute(MESSAGE_SET, LocationManager.getLocation(session).getProperty(getRegisterResult));
                 request.setAttribute(LOGIN_SET, request.getParameter(LOGIN_GET));
                 request.setAttribute(PASS_SET, request.getParameter(PASSWORD_GET));
                 request.setAttribute(FIRST_SET, request.getParameter(FIRST_GET));

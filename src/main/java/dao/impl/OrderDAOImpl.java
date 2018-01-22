@@ -1,6 +1,6 @@
 package dao.impl;
 
-import connection.MyDataSource;
+import connection.DataSourceConnection;
 import dao.daofactory.IOrderDAO;
 import dao.daofactory.Utils;
 import entity.Order;
@@ -29,7 +29,7 @@ public class OrderDAOImpl extends Utils implements IOrderDAO {
     @Override
     public List<Order> findAll() {
         List<Order> list = new ArrayList<>();
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL_ORDER_QUERY);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
@@ -57,7 +57,7 @@ public class OrderDAOImpl extends Utils implements IOrderDAO {
     @Override
     public Order findById(int id) {
         Order order = null;
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_ORDER_BY_ID_QUERY);
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -84,7 +84,7 @@ public class OrderDAOImpl extends Utils implements IOrderDAO {
     @Override
     public List<Order> findByUserId(int idUser) {
         List<Order> orderList = new ArrayList<>();
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_ORDER_BY_USER_ID_QUERY);
             preparedStatement.setInt(1, idUser);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -112,7 +112,7 @@ public class OrderDAOImpl extends Utils implements IOrderDAO {
 
     @Override
     public void deleteOrderById(int id) {
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_ORDER_BY_ID_QUERY);
             preparedStatement.setInt(1, id);
             int result = preparedStatement.executeUpdate();
@@ -127,7 +127,7 @@ public class OrderDAOImpl extends Utils implements IOrderDAO {
 
     @Override
     public String createOrder(Order order) {
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(CREATE_ORDER_QUERY);
             preparedStatement.setInt(1, getMaxId(MAX_ORDER_ID_QUERY) + 1);
             preparedStatement.setInt(2, order.getUserID());
@@ -144,14 +144,13 @@ public class OrderDAOImpl extends Utils implements IOrderDAO {
             }
         } catch (SQLException e) {
             logger.log(Level.SEVERE, e.toString());
-            return "ERROR in Database Access!";
         }
         return null;
     }
 
     @Override
     public String updateBonus(int orderID, String value) {
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_BONUS_QUERY);
             preparedStatement.setString(1, value);
             preparedStatement.setInt(2, orderID);
@@ -163,7 +162,6 @@ public class OrderDAOImpl extends Utils implements IOrderDAO {
             }
         } catch (SQLException e) {
             logger.log(Level.SEVERE, e.toString());
-            return "ERROR in Database Access!";
         }
         return null;
     }

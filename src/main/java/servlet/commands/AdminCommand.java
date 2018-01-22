@@ -4,6 +4,7 @@ import services.AdminService;
 import services.beans.OrdersInfoView;
 import servlet.Localization;
 import servlet.configuration.ConfigurationManager;
+import servlet.configuration.LocationManager;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -29,6 +30,7 @@ public class AdminCommand implements Command {
         String page = null;
         HttpSession session = request.getSession();
         if (request.getParameter(HOME_BUTTON) != null && request.getParameter(HOME_BUTTON).equals("homeAdmin")) {
+            session.setAttribute(MESSAGE_SET, "");
             page = redirect(request);
         }
         if (request.getParameter(ADD_BONUS_BUTTON) != null && request.getParameter(ADD_BONUS_BUTTON).startsWith(Localization.getAttribute(request, "addBonusLoc"))) {
@@ -37,9 +39,9 @@ public class AdminCommand implements Command {
             AdminService adminService = new AdminService();
             String resultMessage = adminService.changeBonus(orderID, value);
             if (resultMessage != null) {
-                request.setAttribute(MESSAGE_SET, resultMessage);
+                session.setAttribute(MESSAGE_SET, LocationManager.getLocation(session).getProperty(resultMessage));
             } else {
-                request.setAttribute(MESSAGE_SET, "ERROR! NO UPDATE!!!");
+                session.setAttribute(MESSAGE_SET, "ERROR! NO UPDATE!!!");
             }
             page = redirect(request);
         }
@@ -47,11 +49,13 @@ public class AdminCommand implements Command {
         if (request.getParameter("enAdminLocBtn") != null && request.getParameter("enAdminLocBtn").equals("english")) {
             session.setAttribute(LOCALE, "EN");
             Localization.setLocation(session);
+            session.setAttribute(MESSAGE_SET, "");
             page = redirect(request);
         }
         if (request.getParameter("uaAdminLocBtn") != null && request.getParameter("uaAdminLocBtn").equals("ukraine")) {
             session.setAttribute(LOCALE, "UA");
             Localization.setLocation(session);
+            session.setAttribute(MESSAGE_SET, "");
             page = redirect(request);
         }
         return page;

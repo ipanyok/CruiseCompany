@@ -6,6 +6,7 @@ import entity.Excursion;
 import entity.Order;
 import services.beans.BucketInfoView;
 import services.beans.OrdersInfoView;
+import servlet.configuration.LocationManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,9 +40,7 @@ public class AdminService {
         if (orderList != null) {
             for (Order elem : orderList) {
                 Cruise cruise = cruiseDAO.findById(elem.getCruiseID());
-                OrdersInfoView ordersInfoView = new OrdersInfoView(elem,
-                        userDAO.findById(elem.getUserID()),
-                        cruise, countryDAO.findById(cruise.getCityFromID()), countryDAO.findById(cruise.getCityToID()), shipDAO.findById(cruise.getShipID()));
+                OrdersInfoView ordersInfoView = new OrdersInfoView(elem, userDAO.findById(elem.getUserID()), cruise, countryDAO.findById(cruise.getCityFromID()), countryDAO.findById(cruise.getCityToID()), shipDAO.findById(cruise.getShipID()));
                 ordersInfoViewsList.add(ordersInfoView);
             }
         } else {
@@ -57,6 +56,7 @@ public class AdminService {
         String resultMessage = orderDAO.updateBonus(orderID, bonus);
         if (resultMessage != null) {
             logger.log(Level.INFO, resultMessage);
+            resultMessage = LocationManager.UPDATE_BONUS;
         } else {
             logger.log(Level.INFO, "ERROR! Not created!");
         }

@@ -1,6 +1,6 @@
 package dao.impl;
 
-import connection.MyDataSource;
+import connection.DataSourceConnection;
 import dao.daofactory.Utils;
 import dao.daofactory.IUserDAO;
 import entity.User;
@@ -28,7 +28,7 @@ public class UserDAOImpl extends Utils implements IUserDAO {
     @Override
     public List<User> findAll() {
         List<User> list = new ArrayList<>();
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL_USER_QUERY);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
@@ -55,7 +55,7 @@ public class UserDAOImpl extends Utils implements IUserDAO {
     @Override
     public User findById(int id) {
         User user = null;
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_USER_BY_ID_QUERY);
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -82,7 +82,7 @@ public class UserDAOImpl extends Utils implements IUserDAO {
     @Override
     public User findByLogin(String login) {
         User user = null;
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_USER_BY_LOGIN_QUERY);
             preparedStatement.setString(1, login);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -108,7 +108,7 @@ public class UserDAOImpl extends Utils implements IUserDAO {
 
     @Override
     public void deleteUserById(int id) {
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             String userLogin = findById(id) != null ? findById(id).getLogin() : "no user";
             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_USER_BY_ID_QUERY);
             preparedStatement.setInt(1, id);
@@ -126,7 +126,7 @@ public class UserDAOImpl extends Utils implements IUserDAO {
 
     @Override
     public void deleteUser(String name) {
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_USER_BY_LOGIN_QUERY);
             preparedStatement.setString(1, name);
             int result = preparedStatement.executeUpdate();
@@ -143,7 +143,7 @@ public class UserDAOImpl extends Utils implements IUserDAO {
 
     @Override
     public boolean createUser(User user) {
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(CREATE_USER_QUERY);
             preparedStatement.setInt(1, getMaxId(MAX_USER_ID_QUERY) + 1);
             preparedStatement.setString(2, user.getLogin());

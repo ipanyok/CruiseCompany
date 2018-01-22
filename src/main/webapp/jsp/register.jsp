@@ -15,7 +15,7 @@
 </head>
 <body>
 <p><br/></p>
-<p align="center"><label class="colortext"> ${message} </label></p>
+<p align="center"><label class="colortext"> ${messageRegister} </label></p>
 <div class="wrapper">
     <form class="form-signin" method="POST" name="registerForm" action="cruisecompany">
         <input type="hidden" name="command" value="registerButton"/>

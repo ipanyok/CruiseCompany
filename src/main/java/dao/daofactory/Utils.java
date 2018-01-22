@@ -1,6 +1,6 @@
 package dao.daofactory;
 
-import connection.MyDataSource;
+import connection.DataSourceConnection;
 import dao.impl.UserDAOImpl;
 
 import java.sql.Connection;
@@ -16,7 +16,7 @@ public abstract class Utils {
 
     public static int getMaxId(String query) {
         int result = 0;
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.next();

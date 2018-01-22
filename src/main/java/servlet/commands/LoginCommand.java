@@ -8,6 +8,7 @@ import services.MainInfoService;
 import services.beans.OrdersInfoView;
 import servlet.Localization;
 import servlet.configuration.ConfigurationManager;
+import servlet.configuration.LocationManager;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -56,7 +57,7 @@ public class LoginCommand implements Command {
                     page = ConfigurationManager.getInstance().getProperty(ConfigurationManager.MAIN_FORM);
                 }
             } else {
-                request.setAttribute(MESSAGE_SET, getCheckMessage);
+                session.setAttribute(MESSAGE_SET, LocationManager.getLocation(session).getProperty(getCheckMessage));
                 request.setAttribute(LOGIN_SET, request.getParameter(LOGIN));
                 request.setAttribute(PASS_SET, request.getParameter(PASSWORD));
                 page = ConfigurationManager.getInstance().getProperty(ConfigurationManager.LOGIN_FORM);

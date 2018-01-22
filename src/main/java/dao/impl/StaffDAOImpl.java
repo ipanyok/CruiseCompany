@@ -1,6 +1,6 @@
 package dao.impl;
 
-import connection.MyDataSource;
+import connection.DataSourceConnection;
 import dao.daofactory.Utils;
 import dao.daofactory.IStaffDAO;
 import entity.Staff;
@@ -29,7 +29,7 @@ public class StaffDAOImpl extends Utils implements IStaffDAO {
     @Override
     public List<Staff> findAll() {
         List<Staff> list = new ArrayList<>();
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL_STAFF_QUERY);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
@@ -53,7 +53,7 @@ public class StaffDAOImpl extends Utils implements IStaffDAO {
     @Override
     public List<Staff> findByShipId(int idShip) {
         List<Staff> staffList = new ArrayList<>();
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_STAFF_BY_SHIP_ID_QUERY);
             preparedStatement.setInt(1, idShip);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -78,7 +78,7 @@ public class StaffDAOImpl extends Utils implements IStaffDAO {
     @Override
     public Staff findByName(String name) {
         Staff staff = null;
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_STAFF_BY_NAME_QUERY);
             preparedStatement.setString(1, name);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -102,7 +102,7 @@ public class StaffDAOImpl extends Utils implements IStaffDAO {
     @Override
     public Staff findById(int id) {
         Staff staff = null;
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_STAFF_BY_ID_QUERY);
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -125,7 +125,7 @@ public class StaffDAOImpl extends Utils implements IStaffDAO {
 
     @Override
     public void deleteStaffById(int id) {
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             String staffName = findById(id).getName();
             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_STAFF_BY_ID_QUERY);
             preparedStatement.setInt(1, id);
@@ -141,7 +141,7 @@ public class StaffDAOImpl extends Utils implements IStaffDAO {
 
     @Override
     public void deleteStaff(String name) {
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_STAFF_BY_NAME_QUERY);
             preparedStatement.setString(1, name);
             int result = preparedStatement.executeUpdate();
@@ -156,7 +156,7 @@ public class StaffDAOImpl extends Utils implements IStaffDAO {
 
     @Override
     public void createStaff(Staff staff) {
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(CREATE_STAFF_QUERY);
             preparedStatement.setInt(1, getMaxId(MAX_STAFF_ID_QUERY) + 1);
             preparedStatement.setInt(2, staff.getShipID());

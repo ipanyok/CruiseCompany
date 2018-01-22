@@ -6,9 +6,9 @@ import javax.sql.DataSource;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class MyDataSource {
+public class DataSourceConnection {
 
-    private static final Logger logger = Logger.getLogger(MyDataSource.class.getName());
+    private static final Logger logger = Logger.getLogger(DataSourceConnection.class.getName());
 
     public static Connection getConnection() {
         Connection connection = null;

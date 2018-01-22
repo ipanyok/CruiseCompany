@@ -5,6 +5,7 @@ import entity.Bucket;
 import entity.Cruise;
 import entity.Excursion;
 import services.beans.BucketInfoView;
+import servlet.configuration.LocationManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +42,7 @@ public class BucketService {
             for (BucketInfoView elem : bucketsOfUser) {
                 if (elem.getCruise().getId() == cruiseId) {
                     logger.log(Level.INFO, "This cruise is already added in bucket!!!");
-                    return "This cruise is already added in bucket!!!";
+                    return LocationManager.CRUISE_ALREADY_ADDED;
                 }
             }
         }
@@ -53,6 +54,7 @@ public class BucketService {
         String resOfAdd = bucketDAO.createBucket(bucket);
         if (resOfAdd != null) {
             logger.log(Level.INFO, resOfAdd);
+            resOfAdd = LocationManager.CREATE_BUCKET;
         } else {
             logger.log(Level.INFO, "ERROR! Not created!");
         }

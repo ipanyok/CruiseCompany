@@ -6,6 +6,7 @@ import entity.Excursion;
 import entity.Order;
 import services.beans.BucketInfoView;
 import services.beans.PagesBean;
+import servlet.configuration.LocationManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +42,7 @@ public class OrderService {
             for (BucketInfoView elem : ordersOfUser) {
                 if (elem.getCruise().getId() == cruiseID) {
                     logger.log(Level.INFO, "Can't buy! This cruise already added in orders");
-                    return "Can't buy! This cruise already added in orders";
+                    return LocationManager.ORDER_ALREADY_ADDED;
                 }
             }
         }
@@ -55,6 +56,7 @@ public class OrderService {
         if (orderResult != null) {
             logger.log(Level.INFO, orderResult);
             bucketDAO.deleteBucketById(bucketID);
+            orderResult = LocationManager.CREATE_ORDER;
         } else {
             logger.log(Level.INFO, "ERROR! Order not created!");
         }

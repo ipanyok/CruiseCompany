@@ -47,25 +47,24 @@ public class AdminServiceTest {
 
     private List<Order> orderList;
 
-    private void createEntities() {
+    @Before
+    public void init() {
         orderList = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             order = new Order();
             orderList.add(order);
         }
-    }
-
-    @Before
-    public void init() {
-        createEntities();
+        cruise = new Cruise();
+        cruise.setCityFromID(1);
+        cruise.setCityToID(1);
     }
 
     @Test
     public void testChangeBonus() {
         int orderID = 1;
         String value = "bonus";
-        when(orderDAO.updateBonus(orderID, value)).thenReturn("Test!");
-        assertEquals(adminService.changeBonus(orderID, value), "Test!");
+        when(orderDAO.updateBonus(orderID, value)).thenReturn("SUCCESS");
+        assertEquals(adminService.changeBonus(orderID, value), "UPDATE_BONUS");
     }
 
     @Test

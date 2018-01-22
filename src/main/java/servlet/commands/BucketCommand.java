@@ -3,6 +3,7 @@ package servlet.commands;
 import services.OrderService;
 import servlet.Localization;
 import servlet.configuration.ConfigurationManager;
+import servlet.configuration.LocationManager;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +18,8 @@ public class BucketCommand implements Command {
     private static final String BUCKET_ID_GET = "idBucketBtn";
     private static final String EXCURSIONS_GET = "excursionList";
     private static final String HIDDEN_SET = "isHidden";
-    private static final String MESSAGE_SET = "messageOrder";
+    private static final String MESSAGE_SET_ORDER = "messageOrder";
+    private static final String MESSAGE_SET_BUCKET = "messageBucket";
 
     /**
      * Actions in bucket page
@@ -39,9 +41,10 @@ public class BucketCommand implements Command {
             String result = orderService.makeOrder(userLogin, cruiseID, bucketID, priceExcursion, excursion);
             request.setAttribute(HIDDEN_SET, "hidden");
             if (result != null) {
-                request.setAttribute(MESSAGE_SET, result);
+                session.setAttribute(MESSAGE_SET_ORDER, LocationManager.getLocation(session).getProperty(result));
+                session.setAttribute(MESSAGE_SET_BUCKET, "");
             } else {
-                request.setAttribute(MESSAGE_SET, "Something wrong!!!");
+                session.setAttribute(MESSAGE_SET_ORDER, "Something wrong!!!");
             }
             page = ConfigurationManager.getInstance().getProperty(ConfigurationManager.MAIN_FORM);
         }

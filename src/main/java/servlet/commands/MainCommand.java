@@ -8,6 +8,7 @@ import services.beans.CruiseInfoView;
 import services.beans.PagesBean;
 import servlet.Localization;
 import servlet.configuration.ConfigurationManager;
+import servlet.configuration.LocationManager;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -32,7 +33,8 @@ public class MainCommand implements Command {
     private static final String CRUISES_SET = "cruises";
     private static final String DATE_SET = "dateValue";
     private static final String HIDDEN_SET = "isHidden";
-    private static final String MESSAGE_SET = "message";
+    private static final String MESSAGE_BUCKET_SET = "messageBucket";
+    private static final String MESSAGE_ORDER_SET = "messageOrder";
     private static final String BUCKETS_SET = "buckets";
     private static final String ORDERS_SET = "orders";
     private static final String LOCALE = "LOCALE";
@@ -57,6 +59,8 @@ public class MainCommand implements Command {
             String date = request.getParameter(DATE_GET);
             List<CruiseInfoView> cruises = mainInfoService.findAllCruises(countryFrom, countryTo, category, date);
             session.setAttribute(ALL_CRUISES, cruises);
+            session.setAttribute(MESSAGE_BUCKET_SET, "");
+            session.setAttribute(MESSAGE_ORDER_SET, "");
             request.setAttribute(DATE_SET, request.getParameter(DATE_GET));
             request.setAttribute(HIDDEN_SET, "visible");
 
@@ -82,9 +86,9 @@ public class MainCommand implements Command {
             String addingResult = bucketService.addBucketToUser((String) session.getAttribute(USER_NAME_SET), cruiseID);
             request.setAttribute(HIDDEN_SET, "hidden");
             if (addingResult != null) {
-                request.setAttribute(MESSAGE_SET, addingResult);
+                session.setAttribute(MESSAGE_BUCKET_SET, LocationManager.getLocation(session).getProperty(addingResult));
             } else {
-                request.setAttribute(MESSAGE_SET, "Something wrong!!!");
+                session.setAttribute(MESSAGE_BUCKET_SET, "Something wrong!!!");
             }
             page = ConfigurationManager.getInstance().getProperty(ConfigurationManager.MAIN_FORM);
         }
@@ -95,6 +99,8 @@ public class MainCommand implements Command {
         }
 
         if (request.getParameter(HOME_BUTTON) != null && request.getParameter(HOME_BUTTON).equals("home")) {
+            session.setAttribute(MESSAGE_BUCKET_SET,"");
+            session.setAttribute(MESSAGE_ORDER_SET,"");
             request.setAttribute(DATE_SET, request.getParameter(DATE_GET));
             request.setAttribute(HIDDEN_SET, "hidden");
             page = ConfigurationManager.getInstance().getProperty(ConfigurationManager.MAIN_FORM);
@@ -109,12 +115,16 @@ public class MainCommand implements Command {
             session.setAttribute(LOCALE, "EN");
             Localization.setLocation(session);
             request.setAttribute(HIDDEN_SET, "hidden");
+            session.setAttribute(MESSAGE_BUCKET_SET,"");
+            session.setAttribute(MESSAGE_ORDER_SET,"");
             page = ConfigurationManager.getInstance().getProperty(ConfigurationManager.MAIN_FORM);
         }
         if (request.getParameter("uaMainLocBtn") != null && request.getParameter("uaMainLocBtn").equals("ukraine")) {
             session.setAttribute(LOCALE, "UA");
             Localization.setLocation(session);
             request.setAttribute(HIDDEN_SET, "hidden");
+            session.setAttribute(MESSAGE_BUCKET_SET,"");
+            session.setAttribute(MESSAGE_ORDER_SET,"");
             page = ConfigurationManager.getInstance().getProperty(ConfigurationManager.MAIN_FORM);
         }
         return page;

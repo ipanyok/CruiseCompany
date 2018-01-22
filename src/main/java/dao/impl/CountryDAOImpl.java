@@ -1,6 +1,6 @@
 package dao.impl;
 
-import connection.MyDataSource;
+import connection.DataSourceConnection;
 import dao.daofactory.Utils;
 import dao.daofactory.ICountryDAO;
 import entity.Country;
@@ -28,7 +28,7 @@ public class CountryDAOImpl extends Utils implements ICountryDAO {
     @Override
     public List<Country> findAll() {
         List<Country> list = new ArrayList<>();
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL_COUNTRIES_QUERY);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
@@ -51,7 +51,7 @@ public class CountryDAOImpl extends Utils implements ICountryDAO {
     @Override
     public Country findById(int id) {
         Country country = null;
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_COUNTRIES_BY_ID_QUERY);
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -74,7 +74,7 @@ public class CountryDAOImpl extends Utils implements ICountryDAO {
     @Override
     public Country findByName(String name) {
         Country country = null;
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_COUNTRIES_BY_NAME_QUERY);
             preparedStatement.setString(1, name);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -96,7 +96,7 @@ public class CountryDAOImpl extends Utils implements ICountryDAO {
 
     @Override
     public void deleteCountryById(int id) {
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             String countryName = findById(id).getName();
             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_COUNTRIES_BY_ID_QUERY);
             preparedStatement.setInt(1, id);
@@ -112,7 +112,7 @@ public class CountryDAOImpl extends Utils implements ICountryDAO {
 
     @Override
     public void deleteCountry(String name) {
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_COUNTRIES_BY_NAME_QUERY);
             preparedStatement.setString(1, name);
             int result = preparedStatement.executeUpdate();
@@ -127,7 +127,7 @@ public class CountryDAOImpl extends Utils implements ICountryDAO {
 
     @Override
     public void createCountry(Country country) {
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(CREATE_COUNTRIES_QUERY);
             preparedStatement.setInt(1, getMaxId(MAX_COUNTRIES_ID_QUERY) + 1);
             preparedStatement.setString(2, country.getName());

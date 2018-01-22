@@ -1,6 +1,6 @@
 package dao.impl;
 
-import connection.MyDataSource;
+import connection.DataSourceConnection;
 import dao.daofactory.Utils;
 import dao.daofactory.IExcursionDAO;
 import entity.Excursion;
@@ -29,7 +29,7 @@ public class ExcursionDAOImpl extends Utils implements IExcursionDAO {
     @Override
     public List<Excursion> findAll() {
         List<Excursion> list = new ArrayList<>();
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL_EXCURSIONS_QUERY);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
@@ -53,7 +53,7 @@ public class ExcursionDAOImpl extends Utils implements IExcursionDAO {
     @Override
     public List<Excursion> findByCruiseId(int idCruise) {
         List<Excursion> excursionList = new ArrayList<>();
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_EXCURSIONS_BY_CRUISE_ID_QUERY);
             preparedStatement.setInt(1, idCruise);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -79,7 +79,7 @@ public class ExcursionDAOImpl extends Utils implements IExcursionDAO {
     @Override
     public Excursion findByName(String name) {
         Excursion excursion = null;
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_EXCURSIONS_BY_NAME_QUERY);
             preparedStatement.setString(1, name);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -103,7 +103,7 @@ public class ExcursionDAOImpl extends Utils implements IExcursionDAO {
     @Override
     public Excursion findById(int id) {
         Excursion excursion = null;
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_EXCURSIONS_BY_ID_QUERY);
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -126,7 +126,7 @@ public class ExcursionDAOImpl extends Utils implements IExcursionDAO {
 
     @Override
     public void deleteExcursionById(int id) {
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             String excursionName = findById(id).getName();
             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_EXCURSIONS_BY_ID_QUERY);
             preparedStatement.setInt(1, id);
@@ -142,7 +142,7 @@ public class ExcursionDAOImpl extends Utils implements IExcursionDAO {
 
     @Override
     public void deleteExcursion(String name) {
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_EXCURSIONS_BY_NAME_QUERY);
             preparedStatement.setString(1, name);
             int result = preparedStatement.executeUpdate();
@@ -157,7 +157,7 @@ public class ExcursionDAOImpl extends Utils implements IExcursionDAO {
 
     @Override
     public void createExcursion(Excursion excursion) {
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(CREATE_EXCURSIONS_QUERY);
             preparedStatement.setInt(1, getMaxId(MAX_EXCURSIONS_ID_QUERY) + 1);
             preparedStatement.setInt(2, excursion.getCruiseID());

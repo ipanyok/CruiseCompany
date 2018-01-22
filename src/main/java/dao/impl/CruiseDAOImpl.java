@@ -1,10 +1,9 @@
 package dao.impl;
 
-import connection.MyDataSource;
+import connection.DataSourceConnection;
 import dao.daofactory.Utils;
 import dao.daofactory.ICruiseDAO;
 import entity.Cruise;
-import services.MainInfoService;
 import services.beans.CruiseInfoView;
 
 import java.sql.Connection;
@@ -44,7 +43,7 @@ public class CruiseDAOImpl extends Utils implements ICruiseDAO {
     @Override
     public List<Cruise> findAll() {
         List<Cruise> list = new ArrayList<>();
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL_CRUISES_QUERY);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
@@ -74,7 +73,7 @@ public class CruiseDAOImpl extends Utils implements ICruiseDAO {
     @Override
     public Cruise findById(int id) {
         Cruise cruise = null;
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_CRUISES_BY_ID_QUERY);
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -104,7 +103,7 @@ public class CruiseDAOImpl extends Utils implements ICruiseDAO {
     @Override
     public Cruise findByName(String name) {
         Cruise cruise = null;
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_CRUISES_BY_NAME_QUERY);
             preparedStatement.setString(1, name);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -134,7 +133,7 @@ public class CruiseDAOImpl extends Utils implements ICruiseDAO {
     @Override
     public List<Cruise> findByDestination(String city_from, String city_to) {
         List<Cruise> listCruise = new ArrayList<>();
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_CRUISES_BY_DEST_QUERY);
             preparedStatement.setString(1, city_from);
             preparedStatement.setString(2, city_to);
@@ -165,7 +164,7 @@ public class CruiseDAOImpl extends Utils implements ICruiseDAO {
 
     @Override
     public void deleteCruiseById(int id) {
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             String cruiseName = findById(id).getName();
             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_CRUISES_BY_ID_QUERY);
             preparedStatement.setInt(1, id);
@@ -181,7 +180,7 @@ public class CruiseDAOImpl extends Utils implements ICruiseDAO {
 
     @Override
     public void deleteCruise(String name) {
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_CRUISES_BY_NAME_QUERY);
             preparedStatement.setString(1, name);
             int result = preparedStatement.executeUpdate();
@@ -196,7 +195,7 @@ public class CruiseDAOImpl extends Utils implements ICruiseDAO {
 
     @Override
     public void createCruise(Cruise cruise) {
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(CREATE_CRUISES_QUERY);
             preparedStatement.setInt(1, getMaxId(MAX_CRUISES_ID_QUERY) + 1);
             preparedStatement.setInt(2, cruise.getShipID());
@@ -239,7 +238,7 @@ public class CruiseDAOImpl extends Utils implements ICruiseDAO {
         }
         str = str.substring(0, str.lastIndexOf("a") - 1) + "ORDER BY CR.ID";
         List<CruiseInfoView> listCruiseInfoResult = new ArrayList<>();
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(str);
             ResultSet resSet = preparedStatement.executeQuery();
             if (resSet.next()) {

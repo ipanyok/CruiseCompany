@@ -111,7 +111,7 @@
     </p>
 
 </form>
-<p align="center"><label class="colortext"> <c:out value="${message}"/> </label></p>
+<p align="center"><label class="colortext"> <c:out value="${messageBucket}"/> </label></p>
 <p align="center"><label class="colortext"> <c:out value="${messageOrder}"/> </label></p>
 </body>
 </html>

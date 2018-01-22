@@ -42,6 +42,19 @@ public class LocationManager {
     public static final String BONUS = "BONUS";
     public static final String TICKET = "TICKET";
     public static final String BUY_NOW = "BUY_NOW";
+    public static final String EMPTY_LOGIN = "EMPTY_LOGIN";
+    public static final String WRONG_PASSWORD = "WRONG_PASSWORD";
+    public static final String IS_EXIST_USER = "IS_EXIST_USER";
+    public static final String EMPTY_PASSWORD = "EMPTY_PASSWORD";
+    public static final String EMPTY_FIRST_NAME = "EMPTY_FIRST_NAME";
+    public static final String EMPTY_LAST_NAME = "EMPTY_LAST_NAME";
+    public static final String ERROR_DAO = "ERROR_DAO";
+    public static final String USER_IS_EXIST = "USER_IS_EXIST";
+    public static final String CRUISE_ALREADY_ADDED = "CRUISE_ALREADY_ADDED";
+    public static final String CREATE_BUCKET = "CREATE_BUCKET";
+    public static final String ORDER_ALREADY_ADDED = "ORDER_ALREADY_ADDED";
+    public static final String CREATE_ORDER = "CREATE_ORDER";
+    public static final String UPDATE_BONUS = "UPDATE_BONUS";
 
     public static LocationManager getLocation(HttpSession session) {
         if (instance == null) {

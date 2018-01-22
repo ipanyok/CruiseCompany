@@ -1,6 +1,6 @@
 package dao.impl;
 
-import connection.MyDataSource;
+import connection.DataSourceConnection;
 import dao.daofactory.IBucketDAO;
 import dao.daofactory.Utils;
 import entity.Bucket;
@@ -26,7 +26,7 @@ public class BucketDAOImpl extends Utils implements IBucketDAO {
     @Override
     public Bucket findById(int id) {
         Bucket bucket = null;
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_BUCKET_BY_ID_QUERY);
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -51,7 +51,7 @@ public class BucketDAOImpl extends Utils implements IBucketDAO {
     @Override
     public List<Bucket> findByUserId(int idUser) {
         List<Bucket> bucketList = new ArrayList<>();
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_BUCKET_BY_USER_ID_QUERY);
             preparedStatement.setInt(1, idUser);
             ResultSet resSet = preparedStatement.executeQuery();
@@ -77,7 +77,7 @@ public class BucketDAOImpl extends Utils implements IBucketDAO {
 
     @Override
     public void deleteBucketById(int id) {
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_BUCKET_BY_ID_QUERY);
             preparedStatement.setInt(1, id);
             int result = preparedStatement.executeUpdate();
@@ -92,7 +92,7 @@ public class BucketDAOImpl extends Utils implements IBucketDAO {
 
     @Override
     public String createBucket(Bucket bucket) {
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(CREATE_BUCKET_QUERY);
             preparedStatement.setInt(1, getMaxId(MAX_BUCKET_ID_QUERY) + 1);
             preparedStatement.setInt(2, bucket.getUserID());

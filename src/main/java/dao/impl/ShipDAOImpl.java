@@ -1,6 +1,6 @@
 package dao.impl;
 
-import connection.MyDataSource;
+import connection.DataSourceConnection;
 import dao.daofactory.Utils;
 import dao.daofactory.IShipDAO;
 import entity.Ship;
@@ -28,7 +28,7 @@ public class ShipDAOImpl extends Utils implements IShipDAO {
     @Override
     public List<Ship> findAll() {
         List<Ship> list = new ArrayList<>();
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL_SHIP_QUERY);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
@@ -51,7 +51,7 @@ public class ShipDAOImpl extends Utils implements IShipDAO {
     @Override
     public Ship findById(int id) {
         Ship ship = null;
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_SHIP_BY_ID_QUERY);
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -74,7 +74,7 @@ public class ShipDAOImpl extends Utils implements IShipDAO {
     @Override
     public Ship findByName(String name) {
         Ship ship = null;
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_SHIP_BY_NAME_QUERY);
             preparedStatement.setString(1, name);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -96,7 +96,7 @@ public class ShipDAOImpl extends Utils implements IShipDAO {
 
     @Override
     public void deleteShipById(int id) {
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             String shipName = findById(id).getName();
             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_SHIP_BY_ID_QUERY);
             preparedStatement.setInt(1, id);
@@ -112,7 +112,7 @@ public class ShipDAOImpl extends Utils implements IShipDAO {
 
     @Override
     public void deleteShip(String name) {
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_SHIP_BY_NAME_QUERY);
             preparedStatement.setString(1, name);
             int result = preparedStatement.executeUpdate();
@@ -127,7 +127,7 @@ public class ShipDAOImpl extends Utils implements IShipDAO {
 
     @Override
     public void createShip(Ship ship) {
-        try (Connection connection = MyDataSource.getConnection()) {
+        try (Connection connection = DataSourceConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(CREATE_SHIP_QUERY);
             preparedStatement.setInt(1, getMaxId(MAX_SHIP_ID_QUERY) + 1);
             preparedStatement.setString(2, ship.getName());
